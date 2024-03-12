@@ -1,0 +1,24 @@
+import csv
+
+def ulozit_data():
+    with open("H:\\python\\ukoly\\bludistaci\\data_b.csv", "w") as soubor:
+      bludistaci = {"Božetěch": 1, "Želmíra": 3, "Andělín": 2, "Hvězdoslava": 1}
+      csv.writer(soubor, delimiter=";").writerow(bludistaci.items())
+
+def ulozit_data(bludistaci):
+    with open("H:\\python\\ukoly\\bludistaci\\data_b.csv", "r", newline="") as file:
+      writer = csv.writer(file)
+
+      for name, number in bludistaci.items():
+          writer.writerow([name, number])
+
+def nacist_data():
+   path = "H:\\python\\ukoly\\bludistaci\\data_b.csv"
+   bludistaci = {}
+   with open(path, "r", newline="") as f:
+      reader = csv.reader(f, delimiter=";")
+      for radek in reader:
+        #  print(x) #vypise vse
+        #  print(x[0]) #vypise 1. cast seznamu/slovniku
+        #  print(x[0], int(x[1])) #vypise 1 a 2 cast seznamu
+        bludistaci[radek[0]] = int(radek[1]) # do promenny radek zapis ty veci [0] a [1]
